@@ -1,0 +1,28 @@
+<div class="hero-unit">
+<% provide(:title, 'Create New Event') %>
+<h1>Create New Event</h1>
+
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@event) do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :Venue %>
+      <%= f.text_field :Venue %>
+
+      <%= f.label :Date %>
+      <%= f.text_field :Date %>
+
+      <%= f.label :Time %>
+      <%= f.text_field :Time %>
+
+      <%= f.submit "Create Event", class: "btn btn-large btn-primary" %>
+
+      <p>Create a new week <%= link_to "New week" %></p>
+    <% end %>
+  </div>
+</div>
+</div>

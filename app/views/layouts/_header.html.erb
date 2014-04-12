@@ -1,18 +1,46 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "Mikes Tennis Academy", root_path, id: "logo" %>
+      <a class="brand">
+        <img src="/assets/Mikem.png"/>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", help_path %></li>
-          <% if signed_in? %>
+          <a class="brand"><img src="/assets/book.png"/>
+          <a class="brand"><img src="/assets/facebook.png"/>
+          <a class="brand"><img src="/assets/twitter.png"/></a>
+
+        </ul>
+        </nav>            
+    </div>
+  </div>
+
+<header class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav pull-left">
+       <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Classes", classes_path %></li>
+          <li><%= link_to "About Us", about_path %></li>
+           <li><%= link_to "Contact", contact_path %></li>
+           <li><%= link_to "Announcements", announcements_path %></li>
+            <li><a>News</a></li>
+        </ul>
+      <nav>
+        <ul class="nav pull-right">
+         
+          <% if signed_in? && current_user.admin? %>
             <li><%= link_to "Users", users_path %></li>
+            <%end%>
+            <% if signed_in? %>
+            <li><%= link_to "Online Booking", events_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                <% if signed_in? && current_user.admin? %>
+                <li><%= link_to "Create Event", create_path %></li>
+                <%end%>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
@@ -26,4 +54,7 @@
       </nav>
     </div>
   </div>
+</div>
 </header>
+
+  </header>

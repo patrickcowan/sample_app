@@ -11,14 +11,92 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314120204) do
+ActiveRecord::Schema.define(version: 20140412151527) do
 
-  create_table "user1s", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+  create_table "associations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "associations", ["event_id"], name: "index_associations_on_event_id"
+  add_index "associations", ["user_id", "event_id"], name: "index_associations_on_user_id_and_event_id", unique: true
+  add_index "associations", ["user_id"], name: "index_associations_on_user_id"
+
+  create_table "event_bookings", force: true do |t|
+    t.integer  "event_registration_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_bookings", ["event_registration_id"], name: "index_event_bookings_on_event_registration_id"
+
+  create_table "event_registrations", force: true do |t|
+    t.integer  "event_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "child_name"
+    t.integer  "child_age"
+    t.string   "payment_method"
+    t.text     "other_details"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "surname"
+  end
+
+  add_index "event_registrations", ["event_id"], name: "index_event_registrations_on_event_id"
+  add_index "event_registrations", ["user_id"], name: "index_event_registrations_on_user_id"
+
+  create_table "event_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_users", ["event_id"], name: "index_event_users_on_event_id"
+  add_index "event_users", ["user_id", "event_id"], name: "index_event_users_on_user_id_and_event_id", unique: true
+  add_index "event_users", ["user_id"], name: "index_event_users_on_user_id"
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "Venue"
+    t.datetime "Date"
+    t.time     "Time"
+  end
+
+  create_table "registrations", force: true do |t|
+    t.integer  "event_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "child_name"
+    t.integer  "child_age"
+    t.string   "payment_method"
+    t.text     "other_details"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "registrations", ["event_id"], name: "index_registrations_on_event_id"
+  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id"
+
+  create_table "relationships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["user_id", "created_at"], name: "index_relationships_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"

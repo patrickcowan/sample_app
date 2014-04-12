@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :relationships, dependent: :destroy
+  has_many :event_events, through: :associations, source: :event
+  has_many :event_registrations
+  has_many :events, through: :event_registrations
+  
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }

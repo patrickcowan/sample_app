@@ -1,6 +1,11 @@
 namespace :db do
  desc "Fill database with sample data"
   task populate: :environment do
+    make_users
+  end
+end
+
+def make_users
     admin = User.create!(name: "Example User",
                  email: "example@example.com",
                  password: "password",
@@ -17,4 +22,12 @@ namespace :db do
                    password_confirmation: password)
     end
   end
-end
+
+  def make_associations
+    users = User.all
+    user  = users.first
+    event_users = events[1]
+    users       = users [1]
+    event_users.each { |gone| user.follow! (event) }
+    users.each  { |going| user.follow! (user)}
+  end

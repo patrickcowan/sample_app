@@ -1,0 +1,37 @@
+<div class="hero-unit">
+<p>Mike Martin Tennis Academy has been running tennis classes since 2006 and have a 
+  reputation for delivering quality coaching. At a young age, we teach essential skills 
+  for any sports people using the mini-tennis programme. Technique, racket skills, balance,
+  coordination and matchplay will all be experienced on the course. A great opportunity for
+  your child to meet other children with similar interests and to spend the summer playing sport outdoors!</p>
+
+<p>
+
+<p><h3>Event Details</h3></p>
+
+
+
+	<div class=" panel text ">
+		<div class="row">
+			
+	   	 <div class="eight columns">
+	   	 
+		 	<div class="row"><h4 class="span8">Title: </h4><p>  <%= @event.title %></div></br></p>
+			<div class="row"><h4 class="span8">Venue : </h4><p> <%= @event.Venue %> </div></br></p>
+		</div>
+	</div>
+
+
+</br>
+<a class="button medium radius alert nice"" onclick="_gaq.push(['_trackEvent', 'Buttons', 'Download theme', 'Homepage']);""  <%= link_to 'Back', events_path %> </a>
+
+
+
+
+
+
+ <a class="button medium radius success"" onclick="_gaq.push(['_trackEvent', 'Buttons', 'Download theme', 'Homepage']);""  <%= link_to "Place Booking", new_event_registration_path(:event_id=> @event.id) %></a>
+
+
+</br></br></br></br>
+</div>

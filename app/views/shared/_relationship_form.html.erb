@@ -1,0 +1,8 @@
+<div class="hero-unit">
+<%= form_for(@relationship) do |f| %>
+  <div class="field">
+    <%= f.text_area :address, placeholder: "Write your address..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>

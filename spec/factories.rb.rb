@@ -9,4 +9,8 @@ FactoryGirl.define do
     	admin true
     end
   end
+
+  factory :relationship do
+  	address "Some address"
+  	user
 end

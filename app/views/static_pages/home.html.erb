@@ -1,10 +1,15 @@
+<% if signed_in? && current_user.admin? %>
+  <div class="row">
+    <aside class="span4">
+        <%= render 'shared/relationship_form' %>     
+    </aside>
+  </div>
+
+<% else %>
+
 <div class="hero-unit">
-  <h1>Home Page</h1>
-
-  <h2>  </h2>
-  <body>
-  	
-  </body>
-
-  
+  <img src="/assets/logo.png"/>
+  <br></br>
+  <p>Mike Martin Tennis Academy has been running in Inverness since 2006. It has grown from strength to strength each year and has a consistent track record of developing promising new juniors at club, district, county and national level. We coach juniors from 3+ and adults of all ages - whether a complete beginner or experienced player. Mike Martin is a LTA Licensed Performance Coach and PTR Instructor. </p>
 </div>
+<% end %>
